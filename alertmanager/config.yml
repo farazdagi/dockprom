@@ -1,5 +1,12 @@
+global:
+    smtp_smarthost: 'smtp.mailgun.org:465'
+    smtp_from: 'postmaster@sandboxa5bb559c6c3f41269fa0c63454de2529.mailgun.org'
+    smtp_auth_username: 'postmaster@sandboxa5bb559c6c3f41269fa0c63454de2529.mailgun.org'
+    smtp_auth_password: '0acf845f2856f25e821d78b60b9a7f52'
+
 route:
-    receiver: 'slack'
+     # A default receiver
+    receiver: 'core-team-mails' # change to slack, see https://www.robustperception.io/using-slack-with-the-alertmanager/
 
 receivers:
     - name: 'slack'
@@ -9,3 +16,6 @@ receivers:
             username: 'Prometheus'
             channel: '#<channel-name>'
             api_url: 'https://hooks.slack.com/services/<webhook-id>'
+    - name: 'core-team-mails'
+      email_configs:
+          - to: 'simple.square@gmail.com'
